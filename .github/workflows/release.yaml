@@ -3,7 +3,9 @@ name: GoReleaser
 on:
   workflow_call:
 
-permissions: {}
+permissions:
+  contents: write
+  packages: write
 
 jobs:
   release:
