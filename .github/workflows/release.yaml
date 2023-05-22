@@ -42,7 +42,7 @@ jobs:
             goreleaser_args=( --single-target --snapshot )
           fi
 
-          goreleaser_args+=( --rm-dist )
+          goreleaser_args+=( --clean )
 
           {
             echo "artifact_name_prefix=${GITHUB_REPOSITORY##*/}-${GITHUB_SHA::8}-"
