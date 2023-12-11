@@ -65,7 +65,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           distribution: goreleaser
-          version: latest
+          # TODO: Restore "latest" once
+          # https://github.com/goreleaser/goreleaser/pull/4442 is available in
+          # a release.
+          version: "~> 1.21"
           args: ${{ steps.vars.outputs.goreleaser_command }} ${{ steps.vars.outputs.goreleaser_args }}
 
       - name: Asset upload
