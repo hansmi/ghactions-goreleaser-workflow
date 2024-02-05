@@ -36,7 +36,7 @@ jobs:
             goreleaser_command=release
           elif [[ "${GITHUB_REF:?}" = +(refs/heads/main|refs/tags/*) ]]; then
             goreleaser_command=release
-            goreleaser_args=( --skip-publish --snapshot )
+            goreleaser_args=( --skip=publish --snapshot )
           else
             goreleaser_command=build
             goreleaser_args=( --single-target --snapshot )
