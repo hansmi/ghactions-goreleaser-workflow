@@ -60,12 +60,12 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v5
+        uses: goreleaser/goreleaser-action@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           distribution: goreleaser
-          version: latest
+          version: "~> v2"
           args: ${{ steps.vars.outputs.goreleaser_command }} ${{ steps.vars.outputs.goreleaser_args }}
 
       - name: Asset upload
