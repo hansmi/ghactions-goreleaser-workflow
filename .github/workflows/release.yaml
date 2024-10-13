@@ -58,7 +58,7 @@ jobs:
 
       - name: QEMU setup
         uses: docker/setup-qemu-action@v3
-        if: inputs.qemu-platforms != ""
+        if: "inputs.qemu-platforms != ''"
         with:
           platforms: ${{ inputs.qemu-platforms }}
 
