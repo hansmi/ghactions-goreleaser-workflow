@@ -43,8 +43,10 @@ jobs:
             goreleaser_command=release
             goreleaser_args=( --skip=publish --snapshot )
           else
-            goreleaser_command=build
-            goreleaser_args=( --snapshot )
+            # goreleaser_command=build
+            # goreleaser_args=( --snapshot )
+            goreleaser_command=release
+            goreleaser_args=( --skip=publish --snapshot )
           fi
 
           goreleaser_args+=( --clean )
