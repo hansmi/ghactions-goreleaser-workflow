@@ -2,6 +2,11 @@ name: GoReleaser
 
 on:
   workflow_call:
+    inputs:
+      qemu-enabled:
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
@@ -51,9 +56,13 @@ jobs:
             echo "goreleaser_args=${goreleaser_args[*]}"
           } | tee -a $GITHUB_OUTPUT
 
+      - name: QEMU setup
+        if: inputs.qemu-enabled
+        uses: docker/setup-qemu-action@v3
+
       - name: GitHub Container Registry login
-        uses: docker/login-action@v3
         if: steps.vars.outputs.docker_login
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
