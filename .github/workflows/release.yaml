@@ -34,20 +34,18 @@ jobs:
 
           docker_login=
           goreleaser_command=
-          goreleaser_args=()
+          goreleaser_args=( --clean )
 
           if [[ "${GITHUB_EVENT_NAME:?}" = +(push|workflow_dispatch) && "${GITHUB_REF:?}" = refs/tags/v[0-9]*.* ]]; then
             docker_login=true
             goreleaser_command=release
           elif [[ "${GITHUB_REF:?}" = +(refs/heads/main|refs/tags/*) ]]; then
             goreleaser_command=release
-            goreleaser_args=( --skip=publish --snapshot )
+            goreleaser_args+=( --snapshot )
           else
             goreleaser_command=build
-            goreleaser_args=( --single-target --snapshot )
+            goreleaser_args+=( --snapshot --single-target )
           fi
-
-          goreleaser_args+=( --clean )
 
           {
             echo "artifact_name_prefix=${GITHUB_REPOSITORY##*/}-${GITHUB_SHA::8}-"
