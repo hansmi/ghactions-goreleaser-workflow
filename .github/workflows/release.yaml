@@ -76,7 +76,7 @@ jobs:
           args: ${{ steps.vars.outputs.goreleaser_command }} ${{ steps.vars.outputs.goreleaser_args }}
 
       - name: Asset upload
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ steps.vars.outputs.artifact_name_prefix }}${{ hashFiles('dist/**') }}
           path: dist/**
