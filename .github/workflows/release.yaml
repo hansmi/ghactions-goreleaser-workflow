@@ -56,7 +56,7 @@ jobs:
 
       - name: QEMU setup
         if: inputs.qemu-enabled
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       - name: GitHub Container Registry login
         if: steps.vars.outputs.docker_login
